@@ -1,12 +1,14 @@
 import cv2
 import numpy as np
 from pyzbar.pyzbar import decode
-import time
+import csv
 
 cap = cv2.VideoCapture(0)
 
-# Set a variable to store the time when the last QR code was detected
-last_detection_time = time.time()
+# Create a CSV file to store the coordinates of each QR code detected
+csv_file = open("qr_codes.csv", mode="w", newline="")
+csv_writer = csv.writer(csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
+csv_writer.writerow(["QR Code Value", "X", "Y"])
 
 while True:
     _, frame = cap.read()
@@ -16,12 +18,8 @@ while True:
         # Extract QR code value as a string
         data = obj.data.decode('utf-8')
         
-        # Check if it's been at least 3 seconds since the last QR code was detected
-        if time.time() - last_detection_time >= 3:
-            print("Found QR code with value:", data)
-            
-            # Update the last detection time
-            last_detection_time = time.time()
+        # Add the coordinates to the CSV file
+        csv_writer.writerow([data, x, y])
     
     # Show the frame in a window
     cv2.imshow("QR code scanner", frame)
@@ -34,3 +32,6 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
+# Close the CSV file
+csv_file.close()
+}
