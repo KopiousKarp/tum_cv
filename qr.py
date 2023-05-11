@@ -13,6 +13,7 @@ def callback(data):
     global x, y
     x = data.pose.position.x
     y = data.pose.position.y
+    print(x,y)
 
 rospy.init_node('listener', anonymous=True)
 rospy.Subscriber("/dwm1001/tag/T/position", PoseStamped, callback)
