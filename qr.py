@@ -34,7 +34,7 @@ while not rospy.is_shutdown():
 
         # Add the coordinates to the CSV file
         csv_writer.writerow([data, x, y])
-
+        print(data)
     # Show the frame in a window
     #cv2.imshow("QR code scanner", frame)
 
