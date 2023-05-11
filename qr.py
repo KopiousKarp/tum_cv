@@ -15,7 +15,7 @@ def callback(data):
     y = data.pose.position.y
 
 rospy.init_node('listener', anonymous=True)
-rospy.Subscriber("pose", PoseStamped, callback)
+rospy.Subscriber("/dwm1001/tag/T/position", PoseStamped, callback)
 
 cap = cv2.VideoCapture(0)
 
