@@ -20,7 +20,7 @@ rospy.Subscriber("pose", PoseStamped, callback)
 cap = cv2.VideoCapture(0)
 
 # Create a CSV file to store the coordinates of each QR code detected
-csv_file = open("qr_codes.csv", mode="w", newline="")
+csv_file = open("qr_codes.csv", mode="wb")
 csv_writer = csv.writer(csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
 csv_writer.writerow(["QR Code Value", "X", "Y"])
 
