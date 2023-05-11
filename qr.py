@@ -28,8 +28,9 @@ csv_writer.writerow(["QR Code Value", "X", "Y"])
 while not rospy.is_shutdown():
     _, frame = cap.read()
     decoded_objects = decode(frame)
-    print(x,y)
+
     for obj in decoded_objects:
+        print(x,y)
         # Extract QR code value as a string
         data = obj.data.decode('utf-8')
 
