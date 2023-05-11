@@ -13,7 +13,7 @@ def callback(data):
     global x, y
     x = data.pose.position.x
     y = data.pose.position.y
-    print(x,y)
+
 
 rospy.init_node('listener', anonymous=True)
 rospy.Subscriber("/dwm1001/tag/T/position", PoseStamped, callback)
@@ -28,7 +28,7 @@ csv_writer.writerow(["QR Code Value", "X", "Y"])
 while not rospy.is_shutdown():
     _, frame = cap.read()
     decoded_objects = decode(frame)
-
+    print(x,y)
     for obj in decoded_objects:
         # Extract QR code value as a string
         data = obj.data.decode('utf-8')
