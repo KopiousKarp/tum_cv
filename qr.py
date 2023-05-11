@@ -36,7 +36,7 @@ while not rospy.is_shutdown():
         csv_writer.writerow([data, x, y])
 
     # Show the frame in a window
-    cv2.imshow("QR code scanner", frame)
+    #cv2.imshow("QR code scanner", frame)
 
     # Wait for the 'q' key to be pressed to exit the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -44,7 +44,7 @@ while not rospy.is_shutdown():
 
 # Release the camera and close all windows
 cap.release()
-cv2.destroyAllWindows()
+#cv2.destroyAllWindows()
 
 # Close the CSV file
 csv_file.close()
